@@ -65,10 +65,16 @@ class Logger(object):
         The format of the log should be:
             "{person.ID} died from infection\n" or "{person.ID} survived infection.\n"
         '''
+        with open(self.file_name, 'a') as f:
+            if did_die_from_infection:
+                f.write(f"Person id: {person._id} died from infection\n")
+            elif not did_die_from_infection:
+                f.write(f"Person id: {person._id} survived infection\n")
+        f.close()
         # TODO: Finish this method. If the person survives, did_die_from_infection
         # should be False.  Otherwise, did_die_from_infection should be True.
         # Append the results of the infection to the logfile
-        pass
+
 
     def log_time_step(self, time_step_number):
         ''' STRETCH CHALLENGE DETAILS:
