@@ -94,4 +94,5 @@ class Logger(object):
         # TODO: Finish this method. This method should log when a time step ends, and a
         # new one begins.
         # NOTE: Here is an opportunity for a stretch challenge!
-        pass
+        with open(self.file_name, 'a') as f:
+            f.write(f"Time step number: {time_step_number}, total dead: {total_dead}, total infected: {total_infected}\n")
