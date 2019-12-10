@@ -93,7 +93,12 @@ def test_did_survive_infection():
         # assert ...
     else:
         assert person.is_alive is False
+        assert person._id == 4
+        assert person.is_vaccinated is False
+        assert person.infection is virus
+        assert virus.name == "Dysentery"
+        assert virus.repr_rate == 0.7
+        assert virus.mortality_rate == 0.2
         # TODO: Write your own assert statements that test
         # the values of each attribute for a Person who did not survive
         # assert ...
-        pass
