@@ -67,7 +67,7 @@ def test_sick_person_instantiation():
     assert person.is_vaccinated is False
     assert person.infection is virus
     assert virus.name == "Dysentery"
-    assert virus.reprp_rate == 0.7
+    assert virus.repr_rate == 0.7
     assert virus.mortality_rate == 0.2
 
 
@@ -82,6 +82,12 @@ def test_did_survive_infection():
     # Check if the Person survived or not
     if survived:
         assert person.is_alive is True
+        assert person._id == 4
+        assert person.is_vaccinated is True
+        assert person.infection is virus
+        assert virus.name == "Dysentery"
+        assert virus.repr_rate == 0.7
+        assert virus.mortality_rate == 0.2
         # TODO: Write your own assert statements that test
         # the values of each attribute for a Person who survived
         # assert ...
