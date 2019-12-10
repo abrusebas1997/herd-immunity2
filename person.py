@@ -25,6 +25,11 @@ class Person(object):
         If Person survives, they become vaccinated and they have no infection.
         Return a boolean value indicating whether they survived the infection.
         '''
+        defense = random.uniform(0.0, 1.0)
+        if self.infection.mortality_rate > defense:
+            self.is_alive = False
+            self.infection =
+        else
         # Only called if infection attribute is not None.
         # TODO:  Finish this method. Should return a Boolean
 
@@ -57,7 +62,13 @@ def test_sick_person_instantiation():
     # TODO: complete your own assert statements that test
     # the values at each attribute
     # assert ...
-    pass
+    assert person._id == 3
+    assert person.is_alive is True
+    assert person.is_vaccinated is False
+    assert person.infection is virus
+    assert virus.name == "Dysentery"
+    assert virus.reprp_rate == 0.7
+    assert virus.mortality_rate == 0.2
 
 
 def test_did_survive_infection():
