@@ -36,20 +36,21 @@ class Simulation(object):
         # TODO: Store each newly infected person's ID in newly_infected attribute.
         # At the end of each time step, call self._infect_newly_infected()
         # and then reset .newly_infected back to an empty list.
-        self.logger = Logger(self.file_name)
+
         self.population = [] # List of Person objects
         self.pop_size = pop_size # Int
         self.next_person_id = 1 # Int
         self.virus = virus # Virus object
+        self.alive_for_vaccinations = 0
         self.initial_infected = initial_infected # Int
         self.total_infected = 0 # Int
         self.current_infected = 0 # Int
         self.vacc_percentage = vacc_percentage # float between 0 and 1
         self.total_dead = 0 # Int
         self.newly_infected = []
-        self.file_name = "{}_simulation_pop_{}_vp_{}_infected_{}.txt".format(
-            virus_name, population_size, vacc_percentage, initial_infected)
-
+        self.file_name = "_virus_name_{}_simulation_pop_{}_vp_{}_infected_{}.txt".format(
+            self.virus.name, pop_size, vacc_percentage, initial_infected)
+        self.logger = Logger(self.file_name)
 
     def _create_population(self, initial_infected):
         '''This method will create the initial population.
@@ -97,7 +98,9 @@ class Simulation(object):
                 bool: True for simulation should continue, False if it should end.
         '''
         # TODO: Complete this helper method.  Returns a Boolean.
-        pass
+        vaccinated_count = 0
+        total_dead_count = 0
+        infected_count = 0
 
     def run(self):
         ''' This method should run the simulation until all requirements for ending
@@ -149,6 +152,9 @@ class Simulation(object):
 
         # TODO: Finish this method.
         #  The possible cases you'll need to cover are listed below:
+        if random_person.is_vaccinated is True:
+            random_person is is_alive
+        elif random_person is
             # random_person is vaccinated:
             #     nothing happens to random person.
             # random_person is already infected:
@@ -167,7 +173,12 @@ class Simulation(object):
         # TODO: Call this method at the end of every time step and infect each Person.
         # TODO: Once you have iterated through the entire list of self.newly_infected, remember
         # to reset self.newly_infected back to an empty list.
-        pass
+        for person in self.population:
+            for id in self.newly_infected:
+                if person._id == id:
+                    person.infection = self.virus
+                    self.current_infected += 1
+        self.newly_infected  = []
 
 
 if __name__ == "__main__":
