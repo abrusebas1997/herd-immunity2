@@ -126,13 +126,17 @@ class Simulation(object):
         # HINT: You may want to call the logger's log_time_step() method at the end of each time step.
         # TODO: Set this variable using a helper
         time_step_counter = 0
-        should_continue = None
+        should_continue = self._simulation_should_continue()
 
         while should_continue:
+            self.time_step()
+            self._infect_newly_infected()
+            time_step_counter += 1
+            should_continue = self._simulation_should_continue()
         # TODO: for every iteration of this loop, call self.time_step() to compute another
         # round of this simulation.
         print('The simulation has ended after {} turns.'.format(time_step_counter))
-        pass
+
 
     def time_step(self):
         ''' This method should contain all the logic for computing one time step
