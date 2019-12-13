@@ -1,7 +1,4 @@
-elif self.infection.mortality_rate >= virus_defense:
-            self.is_alive = False
-            self.infection = None
-            return Falseimport random
+import random
 random.seed(42)
 from virus import Virus
 
