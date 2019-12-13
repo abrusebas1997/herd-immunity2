@@ -116,6 +116,7 @@ class Simulation(object):
         if vaccinated_count == self.pop_size - total_dead_count:
             return False
         return True
+
     def run(self):
         ''' This method should run the simulation until all requirements for ending
         the simulation are met.
@@ -138,7 +139,9 @@ class Simulation(object):
         # TODO: for every iteration of this loop, call self.time_step() to compute another
         # round of this simulation.
         print('The simulation has ended after {} turns.'.format(time_step_counter))
-
+        print(self.alive_for_vaccinations)
+        print(self.total_dead)
+        print(self.total_infected)
 
     def time_step(self):
         ''' This method should contain all the logic for computing one time step
@@ -221,6 +224,8 @@ class Simulation(object):
                     person.infection = self.virus
                     self.current_infected += 1
         self.newly_infected  = []
+
+
 
 
 if __name__ == "__main__":
