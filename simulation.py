@@ -153,8 +153,18 @@ class Simulation(object):
         # TODO: Finish this method.
         #  The possible cases you'll need to cover are listed below:
         if random_person.is_vaccinated is True:
-            random_person is is_alive
-        elif random_person is
+            self.alive_for_vaccinations += 1
+            self.logger.log_interaction(person, random_person, None, True, None)
+        elif random_person.infection is True:
+            self.logger.log_interaction(person, random_person, True, None, None)
+        else:
+            if self.virus.repro_rate >= random.random():
+                self.newly_infected.append(random_person._id)
+                self.total_infected += 1
+                self.logger.log_interaction(person, random_person, None, None, True)
+            else:
+                self.logger.log_interaction(person, random_person)
+
             # random_person is vaccinated:
             #     nothing happens to random person.
             # random_person is already infected:

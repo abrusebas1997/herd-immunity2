@@ -1,4 +1,7 @@
-import random
+elif self.infection.mortality_rate >= virus_defense:
+            self.is_alive = False
+            self.infection = None
+            return Falseimport random
 random.seed(42)
 from virus import Virus
 
@@ -25,11 +28,15 @@ class Person(object):
         If Person survives, they become vaccinated and they have no infection.
         Return a boolean value indicating whether they survived the infection.
         '''
-        defense = random.uniform(0.0, 1.0)
-        if self.infection.mortality_rate > defense:
-            self.is_alive = False
-            self.infection =
-        else
+        if self.infection:
+            rand_val = random.random()
+            if rand_val < self.infection.mortality_rate:
+                self.is_alive = False
+            else:
+                self.is_vaccinated = True
+                self.infection = None
+
+        return self.is_alive
         # Only called if infection attribute is not None.
         # TODO:  Finish this method. Should return a Boolean
 
