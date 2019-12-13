@@ -102,6 +102,18 @@ class Simulation(object):
         total_dead_count = 0
         infected_count = 0
 
+        for person in self.population:
+            if person.is_alive and person.is_vaccinated: # Method from Person class
+                vaccinated_count += 1
+            if not person.is_alive:
+                total_dead_count += 1
+            if person.infection:
+                infected_count += 1
+        if self.total_dead == self.pop_size or infected_count == 0:
+            return False
+        if vaccinated_count == self.pop_size - total_dead_count:
+            return False
+        return True
     def run(self):
         ''' This method should run the simulation until all requirements for ending
         the simulation are met.
@@ -119,7 +131,7 @@ class Simulation(object):
         while should_continue:
         # TODO: for every iteration of this loop, call self.time_step() to compute another
         # round of this simulation.
-        print('The simulation has ended after {time_step_counter} turns.'.format(time_step_counter))
+        print('The simulation has ended after {} turns.'.format(time_step_counter))
         pass
 
     def time_step(self):
@@ -175,7 +187,7 @@ class Simulation(object):
             #     Simulation object's newly_infected array, so that their .infected
             #     attribute can be changed to True at the end of the time step.
         # TODO: Call slogger method during this method.
-        pass
+
 
     def _infect_newly_infected(self):
         ''' This method should iterate through the list of ._id stored in self.newly_infected
